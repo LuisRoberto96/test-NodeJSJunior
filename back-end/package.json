@@ -4,7 +4,9 @@
   "description": "Desafio Contele API Restfull",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "node src/server.js",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "keywords": [],
   "author": "",

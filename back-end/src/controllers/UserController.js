@@ -1,24 +1,28 @@
-const knex = require('../database')
+const knex = require('../database/index')
 
 module.exports = {
+  
   async index (req, res, next) {
     try{
       const results = await knex('users')
-      .where('deleted_at', null)
   
       return res.json(results)
     } catch (error){
       next(error)
     }
-   
   },
+
   async create(req, res, next) {
     try {
-      const { username, email, password } = req.body
+      const { name, email, password } = req.body
+      const created_at = new Date() 
+      const updated_at = new Date()
       await knex('users').insert({
-        username,
+        name,
         email,
-        password
+        password,
+        created_at,
+        updated_at
       })
 
       return res.status(201).send()
@@ -28,11 +32,18 @@ module.exports = {
   },
   async update(req, res, next) {
     try {
-      const { username, email, password } = req.body
+      const { name, email, password, created_at } = req.body
       const { id } = req.params
-                  
+      const updated_at = new Date() 
+
       await knex('users')
-        .update({ username, email, password })
+        .update({ 
+          name, 
+          email,
+          password, 
+          created_at, 
+          updated_at
+        })
         .where({ id })
 
       return res.send()
