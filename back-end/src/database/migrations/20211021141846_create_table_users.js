@@ -1,3 +1,4 @@
+//Arquivo de migrations padrão da tabela de exemplo
 
 exports.up = knex =>
 knex.schema.createTable('users', table =>{

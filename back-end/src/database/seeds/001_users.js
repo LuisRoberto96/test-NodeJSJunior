@@ -1,3 +1,4 @@
+//Arquivo de Seed padrão para o caso de necessitar um reboot do banco
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries

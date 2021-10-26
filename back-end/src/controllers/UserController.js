@@ -1,7 +1,10 @@
+//Arquivo responsável pela lógica dos serviços das rotas de GET,PUT,POST e DELETE
+
 const knex = require('../database/index')
 
 module.exports = {
   
+  //Função responsável por retornar todos os usuários
   async index (req, res, next) {
     try{
       const results = await knex('users')
@@ -12,6 +15,7 @@ module.exports = {
     }
   },
 
+  //Função responsável por criar um usuário
   async create(req, res, next) {
     try {
       const { name, email, password } = req.body
@@ -30,6 +34,8 @@ module.exports = {
         next(error)
       }
   },
+
+  //Função responsável por atualizar os dados do usuário
   async update(req, res, next) {
     try {
       const { name, email, password, created_at } = req.body
@@ -52,6 +58,8 @@ module.exports = {
         next(error)
       }
   },
+
+  //Função responsável por remover um usuário do banco
   async delete(req, res, next) {
     try {
       const { id } = req.params
@@ -64,6 +72,8 @@ module.exports = {
         next(error)
       }
   },
+
+  //Função responsável por retornar dados de um usuário específico
   async getUser (req,res,next) {
     try{
       const { id } = req.params
@@ -76,6 +86,8 @@ module.exports = {
     }
 
   },
+
+  //Função que remove todos os usuários do banco
   async deleteAll (req,res,next) {  
     try{
       await knex('users').del()

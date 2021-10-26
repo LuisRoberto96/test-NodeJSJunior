@@ -1,0 +1,201 @@
+{
+  "openapi" : "3.0.0",
+  "info": {
+    "title" : "API de manipulação de usuários",
+    "description" : "API simples de manipulação de usuários a fim realizar serviços de CRUD por meio de uma API RESTFUL.",
+    "version" : "1.0.0",
+  },
+  "servers" : [
+    {
+    "url" : "http://localhost:3000/api/v1",
+    "description" : "API de teste"
+    }
+  ],
+  "paths" : {
+    "/api/v1/users" : {
+      "get" : {
+        "summary" : "Listagem de usuários",
+        "description" : "Rota responsável por listar todos os usuários",
+        "tags" : ["Users"],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "$ref" : "#/components/schemas/product"
+                }
+              }
+            }
+          }
+        }
+
+      },
+      "post" : {
+        "summary" : "Cadastro de um usuário",
+        "description" : "Rota responsável por cadastrar um usuário",
+        "tags" : ["Users"],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Users"
+              },
+              "examples" : {
+                "user" : {
+                  "value" : {
+                    "name" : "Alan Turing",
+                    "login" : "alanturing@email.com",
+                    "password" : "alanturingmachine"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "$ref" : "#/components/schemas/product"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Remoção de todos os usuários",
+        "description" : "Rota responsável remover todos os usuários",
+        "tags" : ["Users"],
+        "responses" : {
+          "200" : {
+            "description" : "OK"}
+        }
+      }
+
+    },
+    "/api/v1/users/{id}" : {
+      "get" : {
+        "summary" : "Listagem de um usuário pelo Id",
+        "description" : "Rota responsável por listar um usuário pelo seu Id",
+        "tags" : ["Users"],
+        "parameters" : [
+          {
+            "name" : "id",
+            "in" : "path",
+            "schema" : {
+              "type" : "integer"
+            },
+            "description" : "Id do usuário para busca",
+            "required" : "true"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          }
+        }
+
+      },
+      "put" : {
+        "summary" : "Atualização de um usuário",
+        "description" : "Rota responsável por atualizar os dados de um usuário",
+        "tags" : ["Users"],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Users"
+              },
+              "examples" : {
+                "user" : {
+                  "value" : {
+                    "name" : "Edsger Dijkstra",
+                    "login" : "dijkstrag@email.com",
+                    "password" : "dijkstrapath"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "$ref" : "#/components/schemas/product"
+                }
+              }
+            }
+          }
+        }
+
+      },
+      "delete" : {
+        "summary" : "Remoção de um usuário pelo Id",
+        "description" : "Rota responsável por remover um usuário pelo seu Id",
+        "tags" : ["Users"],
+        "parameters" : [
+          {
+            "name" : "id",
+            "in" : "path",
+            "schema" : {
+              "type" : "integer"
+            },
+            "description" : "Id do usuário para remoção",
+            "required" : "true"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "OK" 
+          }
+      }
+    }
+
+  },
+  "components" : {
+    "schemas" : {
+     "Users" : {
+       "type" : "Object",
+       "properties" : {
+         "id" : {
+           "type" : "number"
+         },
+         "name" : {
+           "type" : "string"
+         },
+         "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "created_at" : {
+          "type" : "date-time"
+        },
+        "updated_at" : {
+          "type" : "date-time"
+        }
+
+       }
+     } 
+    }
+  }
+}
