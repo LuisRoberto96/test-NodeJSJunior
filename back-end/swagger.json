@@ -3,7 +3,7 @@
   "info": {
     "title" : "API de manipulação de usuários",
     "description" : "API simples de manipulação de usuários a fim realizar serviços de CRUD por meio de uma API RESTFUL.",
-    "version" : "1.0.0",
+    "version" : "1.0.0"
   },
   "servers" : [
     {
@@ -166,36 +166,37 @@
           "200" : {
             "description" : "OK" 
           }
-      }
-    }
-
-  },
-  "components" : {
-    "schemas" : {
-     "Users" : {
-       "type" : "Object",
-       "properties" : {
-         "id" : {
-           "type" : "number"
-         },
-         "name" : {
-           "type" : "string"
-         },
-         "email" : {
-          "type" : "string"
-        },
-        "password" : {
-          "type" : "string"
-        },
-        "created_at" : {
-          "type" : "date-time"
-        },
-        "updated_at" : {
-          "type" : "date-time"
         }
+      }
 
-       }
-     } 
+    },
+    "components" : {
+      "schemas" : {
+        "Users" : {
+          "type" : "Object",
+          "properties" : {
+            "id" : {
+             "type" : "number"
+            },
+            "name" : {
+              "type" : "string"
+            },
+            "email" : {
+              "type" : "string"
+            },
+            "password" : {
+              "type" : "string"
+            },
+            "created_at" : {
+              "type" : "date-time"
+            },
+            "updated_at" : {
+              "type" : "date-time"
+            }
+
+          }
+        } 
+      }
     }
   }
 }
